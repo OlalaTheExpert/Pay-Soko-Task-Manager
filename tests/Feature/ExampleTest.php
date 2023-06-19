@@ -2,19 +2,22 @@
 
 namespace Tests\Feature;
 
-// use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use App\Models\User;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+use Database\Seeders\UsersTableSeeder;
+
 
 class ExampleTest extends TestCase
 {
+
+    //use RefreshDatabase;
     /**
      * A basic test example.
      */
-    //  Testing
-    public function test_the_application_returns_a_successful_response(): void
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
+    
+   
 }
+

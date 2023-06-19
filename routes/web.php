@@ -1,19 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\User;
 
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
-//Route::Post('login', [ 'as' => 'login', 'uses' => 'LoginController@do']);
-
-//Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
-
-
-Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
-Auth::routes();
+Route::post('/login', [userController::class, 'loginAction'])->name('login');
+// Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+// Auth::routes();
 
 Route::group(['middleware' => ['auth']], function() {
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
