@@ -5,7 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
@@ -18,6 +18,9 @@ public function test_the_application_returns_a_successful_response(): void
     
      $user = User::factory()->create();
      $this->assertModelExists($user);
+
+     $task = Task::factory()->create();
+     $this->assertModelExists($task);
      
     }
 
@@ -77,5 +80,20 @@ public function test_the_application_returns_a_successful_response(): void
      public function test_if_seeder_works()
     {
         $this->seed(UsersTableSeeder::class);
+    }
+
+    // =====New tasks tests
+     public function add_new_task_into_the_database()
+    {
+        $response = $this->post('/save', [
+           
+            'title' => $this->faker->word,
+            'description' => $this->faker->longText,
+            'status' => '1',
+            'progress'=>0,
+            'due_date'=>$this->faker->date(),                   
+             
+        ]);
+    $response->assertRedirect('/');
     }
 }

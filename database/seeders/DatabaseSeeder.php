@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use HasFactory;
 use App\Models\User;
+use App\Models\Task;
 
 use Illuminate\Support\Str;
 
@@ -22,6 +23,10 @@ class DatabaseSeeder extends Seeder
     public function run(){
         
        \App\Models\User::factory(1)->create();
+       \App\Models\Task::factory(10)->create();
+    //    $this->call([
+    //         TasksTableSeeder::class,
+    //     ]);
         // User::create([        
         //     'name' => 'Admin',
         //     'email' => 'admin@admin00',
